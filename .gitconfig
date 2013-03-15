@@ -1,0 +1,29 @@
+[user]
+   name = James Barwell
+   email = jb@jamesbarwell.co.uk
+
+[alias]
+    ci = commit
+    st = status -sb
+    co = checkout
+    di = diff
+    dis = diff --staged
+    br = branch
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    cia = commit --amend
+    review = log HEAD --not @{u} --reverse -p
+
+[core]
+    editor = vim
+
+[color]
+   diff = auto
+   status = auto
+   branch = auto
+   ui = true
+
+[merge]
+    tool = vimdiff
+
+[push]
+    default = current
