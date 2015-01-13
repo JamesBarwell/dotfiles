@@ -1,5 +1,5 @@
 " git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" :VundleInstall
+" :PluginInstall
 
 set nocompatible " be iMproved
 filetype off     " required!
