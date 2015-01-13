@@ -9,6 +9,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 Plugin 'gmarik/vundle'
+Plugin 'chase/vim-ansible-yaml'
 
 " Vundle packages
 " original repos on github
