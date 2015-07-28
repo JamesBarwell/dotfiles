@@ -9,11 +9,12 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 Plugin 'gmarik/vundle'
-Plugin 'chase/vim-ansible-yaml'
 
 " Vundle packages
 " original repos on github
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'kien/ctrlp.vim'
+Plugin 'godlygeek/tabular'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
