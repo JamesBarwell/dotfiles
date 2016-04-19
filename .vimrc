@@ -54,8 +54,10 @@ set noswapfile
 set nofoldenable
 
 " Map :W to :w and :Q to :q
-cnoreabbrev W w
-cnoreabbrev Q q
+cnoreabbrev W w 
+cnoreabbrev Q q 
+cnoreabbrev WQ wq
+cnoreabbrev Wq wq
 
 " Map toggle highlighting of lines over 80 characters to \l
 nnoremap <silent> <Leader>l
