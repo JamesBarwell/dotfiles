@@ -28,6 +28,7 @@ set number
 set showcmd
 set autoread
 set background=dark
+set rnu
 
 " Visual bell
 set vb
