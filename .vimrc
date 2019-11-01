@@ -15,6 +15,9 @@ Plugin 'gmarik/vundle'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
+Plugin 'wting/rust.vim'
+Plugin 'editorconfig/editorconfig-vim'
+Plugin 'leafgarland/typescript-vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -28,7 +31,6 @@ set number
 set showcmd
 set autoread
 set background=dark
-set rnu
 
 " Visual bell
 set vb
@@ -46,6 +48,10 @@ set incsearch
 set smartcase
 set hlsearch
 
+" Directory
+let g:netrw_liststyle = 3
+let g:netrw_banner = 0
+
 " Turn backups off
 set nobackup
 set nowb
@@ -55,10 +61,15 @@ set noswapfile
 set nofoldenable
 
 " Map :W to :w and :Q to :q
-cnoreabbrev W w 
-cnoreabbrev Q q 
+cnoreabbrev W w
+cnoreabbrev Q q
 cnoreabbrev WQ wq
 cnoreabbrev Wq wq
+
+" Map netrw to lowercase
+cnoreabbrev exp Exp
+cnoreabbrev sex Sex
+cnoreabbrev vex Vex!
 
 " Map toggle highlighting of lines over 80 characters to \l
 nnoremap <silent> <Leader>l
@@ -76,9 +87,11 @@ nnoremap <silent> <Leader>l
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Override indentation by filetype
-autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,phtml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+autocmd FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
