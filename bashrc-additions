@@ -1,0 +1,6 @@
+# Git
+export GIT_PS1_SHOWDIRTYSTATE=1
+export PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w $(__git_ps1 "(%s)")\$ '
+
+# Docker compose
+export COMPOSE_IGNORE_ORPHANS=1

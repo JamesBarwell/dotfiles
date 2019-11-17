@@ -11,8 +11,11 @@
     br = branch
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     cia = commit --amend
-    review = log HEAD --not @{u} --reverse -p
+    cia-now = commit --amend --date="$(now)"
+    review = log HEAD --not origin/master --reverse -p
+    reviewbr = "!f() { git log $1 --not origin/master --reverse -p; }; f"
     rebaseroot = rebase -i --root
+    clean-local = !sh -c 'git branch --merged | xargs git branch -d' -
 
 [core]
     editor = vim

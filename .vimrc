@@ -12,12 +12,11 @@ Plugin 'gmarik/vundle'
 
 " Vundle packages
 " original repos on github
-Plugin 'chase/vim-ansible-yaml'
 Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'wting/rust.vim'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'wting/rust.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
