@@ -16,6 +16,7 @@
     reviewbr = "!f() { git log $1 --not origin/master --reverse -p; }; f"
     rebaseroot = rebase -i --root
     clean-local = !sh -c 'git branch --merged | xargs git branch -d' -
+    reviewrelease = log --pretty=format:"%h%x09%an%x09%x09%s"
 
 [core]
     editor = vim
@@ -31,3 +32,4 @@
 
 [push]
     default = current
+	autoSetupRemote = true
