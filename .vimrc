@@ -16,7 +16,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'leafgarland/typescript-vim'
-Plugin 'wting/rust.vim'
+Plugin 'junegunn/vim-journal'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -88,7 +88,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " Override indentation by filetype
 autocmd FileType html,phtml setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType css setlocal shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType javascript setlocal shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType javascript setlocal shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 autocmd FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 
