@@ -21,6 +21,9 @@ Plugin 'junegunn/vim-journal'
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Plugin settings
+let g:ctrlp_custom_ignore = '\v[\/](\.git|node_modules|build)$'
+
 
 " Basics
 syntax on
