@@ -94,5 +94,3 @@ autocmd FileType php setlocal expandtab shiftwidth=4 softtabstop=4
 
 " PHP parser check (CTRL-L)
 :autocmd FileType php noremap <C-L> :!php -l %<CR>
-
-inoremap jk <esc>
