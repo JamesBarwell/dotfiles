@@ -13,8 +13,6 @@ Plugin 'gmarik/vundle'
 " Vundle packages
 " original repos on github
 Plugin 'kien/ctrlp.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'editorconfig/editorconfig-vim'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'junegunn/vim-journal'
 
