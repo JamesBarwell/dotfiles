@@ -13,7 +13,6 @@ Plugin 'gmarik/vundle'
 " Vundle packages
 " original repos on github
 Plugin 'kien/ctrlp.vim'
-Plugin 'leafgarland/typescript-vim'
 Plugin 'junegunn/vim-journal'
 
 call vundle#end()            " required
