@@ -1,0 +1,5 @@
+[global]
+    width = (0, 400)
+    height = (0, 600)
+    offset = (10, 15)
+    font = Monospace 10
