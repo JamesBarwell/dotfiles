@@ -1,0 +1,8 @@
+[Unit]
+Description=Schedule the iPlayer TV PVR service
+
+[Timer]
+OnCalendar=*-*-* 10:00:00
+
+[Install]
+WantedBy=timers.target

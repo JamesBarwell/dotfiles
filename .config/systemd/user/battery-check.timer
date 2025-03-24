@@ -1,0 +1,9 @@
+[Unit]
+Description=Schedule the battery check service
+
+[Timer]
+OnUnitActiveSec=60s
+OnBootSec=10s
+
+[Install]
+WantedBy=timers.target

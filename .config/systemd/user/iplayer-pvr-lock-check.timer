@@ -1,0 +1,8 @@
+[Unit]
+Description=Schedule the iPlayer PVR lock check service
+
+[Timer]
+OnCalendar=*-*-* 12:00:00
+
+[Install]
+WantedBy=timers.target

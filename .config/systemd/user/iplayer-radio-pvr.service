@@ -1,0 +1,6 @@
+[Unit]
+Description=Run iPlayer radio PVR fetch
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /home/james/services/scripts/iplayer-tv-pvr.sh

@@ -1,0 +1,6 @@
+[Unit]
+Description=Run iPlayer PVR lock check and notify
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /home/james/services/scripts/iplayer-pvr-lock-check.sh
