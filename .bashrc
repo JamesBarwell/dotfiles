@@ -9,12 +9,18 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 PS1='[\u@\h \W]\$ '
 
+# Trash-cli
+alias rm='echo "This is not the command you are looking for."; false'
+
 # Git
 source /usr/share/git/completion/git-prompt.sh
 PS1='[\u@\h \W$(__git_ps1 " (%s)")]\$ '
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
+
+# Aliases
+alias o=xdg-open
 
 # Better mv
 function mv() {
