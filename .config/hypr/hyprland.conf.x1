@@ -49,7 +49,6 @@ workspace=0,monitor:$externalMonitor
 
 # Set programs that you use
 $terminal = kitty
-$fileManager = thunar
 $menu = wofi --show drun
 $lock = hyprlock
 
@@ -62,8 +61,7 @@ $lock = hyprlock
 # Or execute your favorite apps at launch like this:
 
 exec-once = ~/.config/hypr/external-monitor-on-off.sh # disable external monitor
-#exec-once = [workspace 1 ] sleep 1 && ~/.config/hypr/workspace-start.sh
-#exec-once = [workspace 2 silent ] firefox
+exec-once = [workspace 1 ] steam
 exec-once = sleep 1 && ~/.config/hypr/wallpaper-random.sh
 
 #############################
@@ -75,6 +73,11 @@ exec-once = sleep 1 && ~/.config/hypr/wallpaper-random.sh
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
 
+# Attempted fixes for external monitor lag
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+# Attempt to fix external monitor lag; this does seem to have improved it a little
+env = WLR_NO_HARDWARE_CURSORS,1
 
 #####################
 ### LOOK AND FEEL ###
@@ -235,6 +238,14 @@ device {
 
 cursor {
     no_warps = true
+    # Attempted fixes for external monitor lag
+    use_cpu_buffer = 0
+    no_hardware_cursors = 1
+}
+
+opengl {
+    # Attempted fix for external monitor lag
+    nvidia_anti_flicker = false
 }
 
 
@@ -248,7 +259,6 @@ $mainMod = SUPER # Sets "Windows" key as main modifier
 # Launchers
 bind = $mainMod, P, exec, $lock
 bind = $mainMod, RETURN, exec, $terminal
-bind = $mainMod, E, exec, $fileManager
 bind = $mainMod, D, exec, $menu
 bind = $mainMod, M, exit,
 
