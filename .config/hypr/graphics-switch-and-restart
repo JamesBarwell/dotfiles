@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# This script will toggle the default Hyprland DRI device between my iGPU and
+# dGPU devices, then log out to allow Hyprland to restart.
+
+set +e
+
+CONFIG_FILEPATH=~/.config/uwsm/env-hyprland
+
+# The line to uncomment/comment, which will enable/disable the dGPU
+MATCH_LINE='export AQ_DRM_DEVICES="\/dev\/dri\/card0:\/dev\/dri\/card1"'
+
+grep -q '#export AQ_DRM_DEVICES="/dev/dri/card0:/dev/dri/card1"' ${CONFIG_FILEPATH}
+DGPU_DISABLED=$?
+
+if [ "${DGPU_DISABLED}" = 0 ]; then
+    echo "iGPU (Intel) is currently enabled as Hyprland primary device"
+else
+    echo "dGPU (nVidia) is currently enabled as Hyprland primary device"
+fi
+
+[[ "$(read -e -p 'Warning, do you wish to toggle primary device and log out? [y/N]> '; echo $REPLY)" == [Yy]* ]] && echo "Toggling device..." || exit 0
+
+if [ "${DGPU_DISABLED}" = 0 ]; then
+  echo "Enabling dGPU as Hyprland primary device"
+  sed -i "/^#${MATCH_LINE}/ c${MATCH_LINE}" ${CONFIG_FILEPATH}
+else
+  echo "Disabling dGPU as Hyprland primary device"
+  sed -i "/^${MATCH_LINE}/ c#${MATCH_LINE}" ${CONFIG_FILEPATH}
+fi
+
+hyprctl dispatch exit
