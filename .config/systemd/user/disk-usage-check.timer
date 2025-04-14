@@ -4,6 +4,7 @@ Description=Schedule the disk usage check service
 [Timer]
 OnUnitActiveSec=60s
 OnBootSec=10s
+RandomizedDelaySec=10s
 
 [Install]
 WantedBy=timers.target
