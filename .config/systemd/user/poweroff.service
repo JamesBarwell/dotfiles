@@ -3,4 +3,4 @@ Description=Shutdown every day at specified time
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/systemctl shutdown -h now
+ExecStart=/usr/bin/systemctl poweroff
