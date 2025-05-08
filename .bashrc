@@ -22,6 +22,8 @@ GIT_PS1_SHOWCOLORHINTS=1
 # Aliases
 alias o=xdg-open
 
+alias sizes="du -h --max-depth 1 | sort -hr"
+
 # Better mv
 function mv() {
   if [ "$#" -ne 1 ]; then
