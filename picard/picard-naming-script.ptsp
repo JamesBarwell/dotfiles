@@ -1,0 +1,12 @@
+title: My script
+description: ""
+author: ''
+license: ''
+version: ''
+last_updated: 2025-03-25 22:58:57 UTC
+script_language_version: '1.1'
+script: |
+  $if2(%albumartist%,%artist%)/
+  $if(%albumartist%,%album%/,)
+  $if($gt(%totaldiscs%,1),$if($gt(%totaldiscs%,9),$num(%discnumber%,2),%discnumber%)-,)$if($and(%albumartist%,%tracknumber%),$num(%tracknumber%,2) - ,)$if(%_multiartist%,%artist% - ,)%title%
+id: ff380b8e-4acf-47f3-a9b4-e2e68c15b818
