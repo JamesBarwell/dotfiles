@@ -21,6 +21,7 @@
         "pulseaudio",
         "network",
         "disk",
+        "disk#2",
         //"power-profiles-daemon",
         "cpu",
         "memory",
@@ -98,8 +99,13 @@
     },
     "disk": {
         "interval": 30,
-        "format": "{free} / {total}",
+        "format": "n0: {free} / {total}",
         "path": "/home"
+    },
+    "disk#2": {
+        "interval": 30,
+        "format": "n1: {free} / {total}",
+        "path": "/mnt/nvme1"
     },
     "idle_inhibitor": {
         "format": "{icon}",
