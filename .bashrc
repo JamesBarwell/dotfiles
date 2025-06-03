@@ -20,7 +20,10 @@ GIT_PS1_SHOWUNTRACKEDFILES=1
 GIT_PS1_SHOWCOLORHINTS=1
 
 # Aliases
-alias o=xdg-open
+xdg-open-realpath() {
+  xdg-open $(realpath $1) &
+}
+alias o=xdg-open-realpath
 
 alias sizes="du -h --max-depth 1 | sort -hr"
 
