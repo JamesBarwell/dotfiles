@@ -21,7 +21,8 @@ GIT_PS1_SHOWCOLORHINTS=1
 
 # Aliases
 xdg-open-realpath() {
-  xdg-open $(realpath $1) &
+  abs_path=$(realpath "${@}")
+  xdg-open "${abs_path}" &
 }
 alias o=xdg-open-realpath
 
