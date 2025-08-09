@@ -5,11 +5,11 @@ status_path=$XDG_RUNTIME_DIR/trackpad-disabled
 device_name=synaptics-tm3512-010
 
 if [ ! -f "${status_path}" ] ; then
-    notify-send -u normal "Disable Touchpad"
+    notify-send -u normal "Trackpad disabled"
     hyprctl keyword "device[${device_name}]:enabled" false
     touch $status_path
 else
-    notify-send -u normal "Enabling Touchpad"
+    notify-send -u normal "Trackpad enabled"
     hyprctl keyword "device[${device_name}]:enabled" true
     /usr/bin/rm $status_path
 fi
