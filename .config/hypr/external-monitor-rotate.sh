@@ -12,4 +12,4 @@ fi
 
 echo "Rotating monitor ${monitor} from translation ${current_transform} to ${next_translation}"
 
-hyprctl keyword monitor ${monitor},preferred,auto,auto,transform,${next_translation} >> /dev/null
+hyprctl keyword monitorv2[$monitor]:transform $next_translation
