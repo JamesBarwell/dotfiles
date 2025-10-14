@@ -1,12 +1,15 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 monitor=HDMI-A-1
-hyprctl monitors | grep HDMI-A-1
-monitor_is_disabled=$?
 
-# Invert the current disabled state
-monitor_disabled_state=$((1-$monitor_is_disabled))
+# 1 if external monitor is disabled
+hyprctl monitors | grep $monitor > /dev/null
+nowState=$?
 
-echo "Setting monitor ${monitor} disabled state to ${monitor_disabled_state}"
+# Invert state
+nextState=$((1-$nowState))
 
-hyprctl keyword monitorv2[$monitor]:disabled $monitor_disabled_state
+# Set monitor
+hyprctl keyword monitorv2[$monitor]:disabled $nextState
+
+echo "Set $monitor disabled from $nowState to $nextState"

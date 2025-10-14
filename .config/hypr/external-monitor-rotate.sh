@@ -1,15 +1,17 @@
-#!/usr/bin/sh
+#!/bin/sh
 
 monitor=HDMI-A-1
 
-current_transform=$(hyprctl monitors | grep -A12 HDMI-A-1 | grep transform | grep -Eo '[0-9]')
+# Current transform state of monitor
+nowState=$(hyprctl monitors | grep -A12 HDMI-A-1 | grep transform | grep -Eo '[0-9]')
 
-next_translation=$((current_transform + 1))
-
-if [ ${next_translation} = 4 ]; then
-    next_translation=0
+# Increment state
+nextState=$(($nowState + 1))
+if [ ${nextState} = 4 ]; then
+    nextState=0
 fi
 
-echo "Rotating monitor ${monitor} from translation ${current_transform} to ${next_translation}"
+# Rotate monitor
+hyprctl keyword monitorv2[$monitor]:transform $nextState
 
-hyprctl keyword monitorv2[$monitor]:transform $next_translation
+echo "Transform $monitor from $nowState to $nextState"
