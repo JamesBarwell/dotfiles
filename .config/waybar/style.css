@@ -158,6 +158,10 @@ label:focus {
   background-color: #f53c3c;
 }
 
+#temperature.warning{
+  background-color: #db7f1c;
+}
+
 #temperature.critical {
   background-color: #eb4d4b;
 }
