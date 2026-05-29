@@ -1,7 +1,7 @@
 #!/bin/sh
 
 defaultTemp=6000
-warmTemp=3500
+warmTemp=4000
 
 nowTemp=$(hyprctl hyprsunset temperature)
 

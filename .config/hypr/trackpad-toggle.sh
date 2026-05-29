@@ -4,12 +4,17 @@ status_path=$XDG_RUNTIME_DIR/trackpad-disabled
 # device_name=synps/2-synaptics-touchpad
 device_name=synaptics-tm3512-010
 
+nextState=""
+
 if [ ! -f "${status_path}" ] ; then
-    notify-send -u normal "Trackpad disabled"
-    hyprctl keyword "device[${device_name}]:enabled" false
+    message="disabled"
+    nextState=false
     touch $status_path
 else
-    notify-send -u normal "Trackpad enabled"
-    hyprctl keyword "device[${device_name}]:enabled" true
+    message="enabled"
+    nextState=true
     /usr/bin/rm $status_path
 fi
+
+notify-send -u normal "Trackpad $message"
+hyprctl eval "hl.device({ name = \"$device_name\", enabled = $nextState })"
