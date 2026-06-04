@@ -67,6 +67,7 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 hl.on("hyprland.start", function ()
   hl.exec_cmd("kitty --hold btop", { workspace = "1" })
   hl.exec_cmd("sleep 0.3 && kitty --hold vim ~/docs/todos/todo", { workspace = "1" })
+  hl.exec_cmd("sleep 0.6 && kitty --hold cmus", { workspace = "1" })
   hl.exec_cmd("sleep 1 && ~/.config/hypr/trackpad-toggle.sh")
   hl.exec_cmd("steam -silent")
 end)
@@ -90,7 +91,7 @@ hl.config({
         resize_on_border = false,
         allow_tearing = false,
 
-        layout = "dwindle",
+        layout = "master",
     },
 
     decoration = {
@@ -124,6 +125,8 @@ hl.config({
     },
     master = {
         new_status = "master",
+        mfact = 0.6,
+        new_status = "slave",
     },
     scrolling = {
         fullscreen_on_one_column = true,
@@ -282,7 +285,7 @@ hl.bind(mainMod .. " + M", pip_resize(1.1))
 
 --- Screenshots
 hl.bind("Print", hl.dsp.exec_cmd("grim $(xdg-user-dir DOWNLOAD)/screenshots/$(date --utc +%Y%m%d_%H%M%SZ).png")) -- full
--- TODO this region one isn't working
+-- TODO this region one isn't working. Might be a bug in permissions, given they shouldn't be needed? https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
 hl.bind("CTRL + Print", hl.dsp.exec_cmd("grim -g $(slurp -o) $(xdg-user-dir DOWNLOAD)/screenshots/$(date --utc +%Y%m%d_%H%M%SZ).png")) -- region
 
 --- Switch workspaces, send windows to workspaces
