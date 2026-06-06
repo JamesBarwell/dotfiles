@@ -274,6 +274,7 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 --hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")) -- only enable when wanted
+hl.bind(mainMod .. ' + Numbersign', hl.dsp.workspace.toggle_special('scratchpad')) -- Hash key
 
 --- Custom scripts
 hl.bind(mainMod .. " + F1", lg_ultragear_toggle())
@@ -330,6 +331,17 @@ hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("playerctl play-pause")) -- Extra pla
 
 -- Windows and Workspaces
 
+--- Scratchpad workspace
+hl.workspace_rule({
+  workspace = 'special:scratchpad',
+  monitor = primaryMonitor,
+  layout = "scrolling",
+  gaps_out = 100,
+  border_size = 1,
+  decorate = true,
+  on_created_empty = 'kitty',
+})
+
 --- Ignore maximize requests from all apps. You'll probably like this.
 hl.window_rule({
     name  = "suppress-maximize-events",
@@ -359,11 +371,11 @@ hl.window_rule({
     match = { class = ".*" },
 })
 
---- Turn off decoration when only one window in workspace
+--- Turn off decoration when only one window in workspace (excluding scratchpad)
 hl.window_rule {
   name = "exclusive-disable-decoration",
   decorate = false,
-  match = { workspace = "w[t1]" },
+  match = { workspace = "w[t1]s[false]" },
 }
 
 --- Firefox: floating PIP (https://github.com/hyprwm/Hyprland/issues/2942)
