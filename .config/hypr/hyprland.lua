@@ -336,10 +336,18 @@ hl.workspace_rule({
   workspace = 'special:scratchpad',
   monitor = primaryMonitor,
   layout = "scrolling",
-  gaps_out = 100,
+  gaps_out = 150,
   border_size = 1,
   decorate = true,
   on_created_empty = 'kitty',
+})
+
+hl.window_rule({
+    name  = "scratchpad-opacity",
+    match = {
+      workspace = "special:scratchpad",
+    },
+    opacity = "0.75",
 })
 
 --- Ignore maximize requests from all apps. You'll probably like this.
