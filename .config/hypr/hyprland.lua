@@ -272,15 +272,15 @@ hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
 -- TODO: this fullscreen state command is broken since the Lua change and causes an error. Also see: https://github.com/hyprwm/Hyprland/discussions/14531
 --hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen_state({ internal = 2, client = hl.get_active_window().fullscreen_client, action = "toggle" }))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
+hl.bind(mainMod .. ' + G', hl.dsp.workspace.toggle_special('scratchpad')) -- Hash key
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
---hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'")) -- only enable when wanted
-hl.bind(mainMod .. ' + Numbersign', hl.dsp.workspace.toggle_special('scratchpad')) -- Hash key
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
 --- Custom scripts
 hl.bind(mainMod .. " + F1", lg_ultragear_toggle())
 hl.bind(mainMod .. " + F2", lg_ultragear_rotate())
-hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("~/.config/hypr/hyprsunset-toggle.sh"))
-hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("~/.config/hypr/trackpad-toggle.sh"))
+hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("~/.config/hypr/hyprsunset-toggle.sh")) -- TODO lua script
+hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("~/.config/hypr/trackpad-toggle.sh")) -- TODO hyprland devices / lua script
 hl.bind(mainMod .. " + N", pip_resize(0.9))
 hl.bind(mainMod .. " + M", pip_resize(1.1))
 
