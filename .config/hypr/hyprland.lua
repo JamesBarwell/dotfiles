@@ -51,6 +51,17 @@ hl.workspace_rule({
 })
 
 
+-- Devices
+
+local trackpad_name = "synaptics-tm3512-010"
+local trackpad_enabled = false
+
+hl.device({
+    name = trackpad_name,
+    enabled = trackpad_enabled,
+})
+
+
 -- Startup
 
 --- Environment variables
@@ -244,6 +255,20 @@ local function lg_ultragear_rotate()
     end
 end
 
+
+local function hyprsunset_temperature(delta)
+    return function()
+        hl.dispatch(hl.dsp.exec_cmd("hyprctl hyprsunset temperature " .. delta))
+    end
+end
+
+local function trackpad_toggle()
+    return function()
+        trackpad_enabled = not trackpad_enabled
+        hl.device({ name = trackpad_name, enabled = trackpad_enabled })
+    end
+end
+
 -- Disable hyprsunset filter when fullscreen
 -- TODO broken due to bug, see: https://github.com/hyprwm/hyprsunset/issues/76
 --hl.on("window.fullscreen", function(window)
@@ -279,8 +304,9 @@ hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("command -v hyprshutdown >/de
 --- Custom scripts
 hl.bind(mainMod .. " + F1", lg_ultragear_toggle())
 hl.bind(mainMod .. " + F2", lg_ultragear_rotate())
-hl.bind(mainMod .. " + F3", hl.dsp.exec_cmd("~/.config/hypr/hyprsunset-toggle.sh")) -- TODO lua script
-hl.bind(mainMod .. " + F4", hl.dsp.exec_cmd("~/.config/hypr/trackpad-toggle.sh")) -- TODO hyprland devices / lua script
+hl.bind(mainMod .. " + F3", hyprsunset_temperature("-1000"))
+hl.bind(mainMod .. " + F4", hyprsunset_temperature("+1000"))
+hl.bind(mainMod .. " + F5", trackpad_toggle())
 hl.bind(mainMod .. " + N", pip_resize(0.9))
 hl.bind(mainMod .. " + M", pip_resize(1.1))
 
