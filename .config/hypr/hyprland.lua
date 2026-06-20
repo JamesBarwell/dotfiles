@@ -352,7 +352,7 @@ hl.workspace_rule({
   workspace = 'special:scratchpad',
   monitor = primaryMonitor,
   layout = "scrolling",
-  gaps_out = 150,
+  gaps_out = 100,
   border_size = 1,
   decorate = true,
   on_created_empty = 'kitty',
