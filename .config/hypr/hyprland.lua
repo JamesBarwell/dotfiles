@@ -31,7 +31,7 @@ hl.monitor({
     vrr       = 1,
 })
 
---- Set workspaces to specific monitors
+--- Set workspaces to primary monitor
 
 for workspaceIndex = 1, 9 do
     hl.workspace_rule({
@@ -39,16 +39,6 @@ for workspaceIndex = 1, 9 do
         monitor = primaryMonitor
     })
 end
-
-hl.workspace_rule({
-    workspace = 10,
-    monitor = lgUltragear,
-})
-
-hl.workspace_rule({
-    workspace = 10,
-    monitor = lgC4,
-})
 
 
 -- Devices
