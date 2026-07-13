@@ -2,7 +2,7 @@
 Description=Schedule the disk usage check service
 
 [Timer]
-OnUnitActiveSec=60s
+OnUnitActiveSec=300s
 OnBootSec=10s
 RandomizedDelaySec=10s
 
