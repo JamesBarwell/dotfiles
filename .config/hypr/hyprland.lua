@@ -299,8 +299,7 @@ hl.bind(mainMod .. " + M", pip_resize(1.1))
 
 --- Screenshots
 hl.bind("Print", hl.dsp.exec_cmd("grim $(xdg-user-dir DOWNLOAD)/screenshots/$(date --utc +%Y%m%d_%H%M%SZ).png")) -- full
--- TODO this region one isn't working. Might be a bug in permissions, given they shouldn't be needed? https://wiki.hypr.land/Configuring/Advanced-and-Cool/Permissions/
-hl.bind("CTRL + Print", hl.dsp.exec_cmd("grim -g $(slurp -o) $(xdg-user-dir DOWNLOAD)/screenshots/$(date --utc +%Y%m%d_%H%M%SZ).png")) -- region
+hl.bind("CTRL + Print", hl.dsp.exec_cmd("grim -g \"$(slurp -o)\" $(xdg-user-dir DOWNLOAD)/screenshots/$(date --utc +%Y%m%d_%H%M%SZ).png")) -- region
 
 --- Switch workspaces, send windows to workspaces
 for i = 1, 10 do
