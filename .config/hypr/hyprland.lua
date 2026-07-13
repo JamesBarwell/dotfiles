@@ -259,15 +259,13 @@ local function trackpad_toggle()
 end
 
 -- Disable hyprsunset filter when fullscreen
--- TODO broken due to bug, see: https://github.com/hyprwm/hyprsunset/issues/76
---hl.on("window.fullscreen", function(window)
---  if window.fullscreen == 2 then
---    hl.dispatch(hl.dsp.exec_cmd("hyprctl hyprsunset identity"))
---  else
---    hl.dispatch(hl.dsp.exec_cmd("hyprctl hyprsunset temperature 5000"))
---    --hl.dispatch(hl.dsp.exec_cmd("hyprctl hyprsunset reset identity"))
---  end
---end)
+hl.on("window.fullscreen", function(window)
+  if window.fullscreen == 2 then
+    hl.dispatch(hl.dsp.exec_cmd("hyprctl hyprsunset identity"))
+  else
+    hl.dispatch(hl.dsp.exec_cmd("hyprctl hyprsunset reset identity"))
+  end
+end)
 
 
 -- Input
