@@ -1,0 +1,1 @@
+KERNEL=="card*", SUBSYSTEM=="drm", ATTRS{device}=="0x3e9b", ATTRS{subsystem_device}=="0x229f", SYMLINK+="dri/intel-igpu"
