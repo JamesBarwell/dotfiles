@@ -67,9 +67,8 @@ hl.env("__GLX_VENDOR_LIBRARY_NAME", "nvidia")
 
 hl.on("hyprland.start", function ()
   hl.exec_cmd("kitty --hold btop", { workspace = "1" })
-  hl.exec_cmd("sleep 0.3 && kitty --hold vim ~/docs/todos/todo", { workspace = "1" })
-  hl.exec_cmd("sleep 0.6 && kitty --hold cmus", { workspace = "1" })
-  hl.exec_cmd("sleep 1 && ~/.config/hypr/trackpad-toggle.sh")
+  hl.exec_cmd("sleep 0.4 && kitty --hold vim ~/docs/todos/todo", { workspace = "1" })
+  hl.exec_cmd("sleep 0.8 && kitty --hold cmus", { workspace = "1" })
   hl.exec_cmd("steam -silent")
 end)
 
