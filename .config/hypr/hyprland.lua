@@ -127,6 +127,7 @@ hl.config({
         new_status = "master",
         mfact = 0.6,
         new_status = "slave",
+        focus_master_on_close = true,
     },
     scrolling = {
         fullscreen_on_one_column = true,
