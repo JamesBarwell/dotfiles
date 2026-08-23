@@ -262,6 +262,14 @@ local function trackpad_toggle()
     end
 end
 
+local function monitor_switch()
+    return function()
+        local isPrimaryEnabled = hl.get_monitor(primaryMonitor) ~= nil
+        hl.monitor({ output = primaryMonitor, disabled = isPrimaryEnabled })
+        hl.monitor({ output = lgUltragear, disabled = not isPrimaryEnabled })
+    end
+end
+
 -- Disable hyprsunset filter when fullscreen
 hl.on("window.fullscreen", function(window)
   if window.fullscreen == 2 then
@@ -278,28 +286,26 @@ end)
 
 local mainMod = "SUPER"
 
----- Program launchers
+---- Home row: programs and window controls
+hl.bind(mainMod .. ' + G', hl.dsp.workspace.toggle_special('scratchpad'))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd("kitty"))
 hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("wofi --show drun"))
-hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprlock"))
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
+hl.bind(mainMod .. " + R", hl.dsp.window.float({ action = "toggle" }))
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 
----- Window controls
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
--- TODO: this fullscreen state command is broken since the Lua change and causes an error. Also see: https://github.com/hyprwm/Hyprland/discussions/14531
---hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen_state({ internal = 2, client = hl.get_active_window().fullscreen_client, action = "toggle" }))
-hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
-hl.bind(mainMod .. ' + G', hl.dsp.workspace.toggle_special('scratchpad')) -- Hash key
-hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
+----- Lock / log out
+hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
 
---- Custom scripts
+--- Monitor and devices
 hl.bind(mainMod .. " + F1", lg_ultragear_toggle())
 hl.bind(mainMod .. " + F2", lg_ultragear_rotate())
-hl.bind(mainMod .. " + F3", hyprsunset_temperature("-1000"))
-hl.bind(mainMod .. " + F4", hyprsunset_temperature("+1000"))
+hl.bind(mainMod .. " + F3", hyprsunset_temperature("-500"))
+hl.bind(mainMod .. " + F4", hyprsunset_temperature("+500"))
 hl.bind(mainMod .. " + F5", trackpad_toggle())
-hl.bind(mainMod .. " + N", pip_resize(0.9))
-hl.bind(mainMod .. " + M", pip_resize(1.1))
+hl.bind(mainMod .. " + F6", monitor_switch())
 
 --- Screenshots
 hl.bind("Print", hl.dsp.exec_cmd("grim $(xdg-user-dir DOWNLOAD)/screenshots/$(date --utc +%Y%m%d_%H%M%SZ).png")) -- full
@@ -342,7 +348,15 @@ hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"))
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"))
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"))
 hl.bind("XF86AudioStop", hl.dsp.exec_cmd("playerctl stop"))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("playerctl play-pause")) -- Extra play-pause with no media button
+
+--- Multimedia additional keys
+hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("playerctl previous"))
+hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("playerctl position 0"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("playerctl play-pause"))
+hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("playerctl stop"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("playerctl next"))
+hl.bind(mainMod .. " + N", pip_resize(0.9))
+hl.bind(mainMod .. " + M", pip_resize(1.1))
 
 
 -- Windows and Workspaces
